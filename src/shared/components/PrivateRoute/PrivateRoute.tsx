@@ -1,9 +1,11 @@
-import useUser from '../../hooks/useUser';
+import { Navigate, Outlet } from 'react-router-dom';
+import { RoutesEnum } from '../../enums';
+import { useUser } from '../../hooks';
 
 const PrivateRoute = () => {
     const user = useUser();
 
-    return <div>PrivateRoute</div>;
+    return user?.access_token ? <Outlet /> : <Navigate to={RoutesEnum.Login} />;
 };
 
 export default PrivateRoute;
