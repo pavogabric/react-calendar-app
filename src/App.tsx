@@ -1,8 +1,12 @@
-import './App.css';
+import styles from './App.module.scss';
 import Login from './auth/login/Login';
 
 function App() {
-    return <Login />;
+    return (
+        <div className={styles.app}>
+            <Login />
+        </div>
+    );
 }
 
 export default App;

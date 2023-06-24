@@ -1,13 +1,13 @@
+import { Button } from '../../shared/components';
 import styles from './Login.module.scss';
+import { useLogin } from './hooks';
 
-interface Props {
-    title?: string;
-}
+const Login = () => {
+    const login = useLogin();
 
-const Login = (props: Props) => {
     return (
         <div className={styles.login}>
-            <p>test</p>
+            <Button onClick={() => login()}>Login with Google 🚀</Button>
         </div>
     );
 };
