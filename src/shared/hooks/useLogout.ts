@@ -2,11 +2,7 @@ import { useNavigate } from 'react-router';
 import { RoutesEnum } from '../enums';
 import LocalStoreUtil from '../utils/LocalStoreUtils';
 
-interface UseLogout {
-    logout: () => void;
-}
-
-const useLogout = (): UseLogout => {
+const useLogout = () => {
     const navigate = useNavigate();
 
     const logout = () => {
@@ -14,7 +10,7 @@ const useLogout = (): UseLogout => {
         navigate(RoutesEnum.Login);
     };
 
-    return { logout };
+    return logout;
 };
 
 export default useLogout;
