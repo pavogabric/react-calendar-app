@@ -1,18 +1,22 @@
-.events {
+.container {
     display: flex;
     flex-direction: column;
     gap: 24px;
-    .header {
+    border-top: 3px solid black;
+
+    .actions {
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        .nextBtn {
+            margin-left: auto;
+        }
     }
 
-    .list {
-        border: 1px solid red;
+    .days {
         display: flex;
         align-items: flex-start;
-        justify-content: center;
-        gap: 16px;
+        justify-content: space-between;
     }
 }
