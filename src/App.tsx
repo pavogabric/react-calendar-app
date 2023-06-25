@@ -1,8 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Login from './auth/login/Login';
 import Calendar from './dashboard/calendar/Calendar';
-import GuestRoute from './shared/components/GuestRoute/GuestRoute';
-import PrivateRoute from './shared/components/PrivateRoute/PrivateRoute';
+import { GuestRoute, PrivateRoute } from './shared/components';
 import { RoutesEnum } from './shared/enums';
 
 function App() {
