@@ -1,0 +1,32 @@
+@use 'styles';
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-primary);
+    color: var(--primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--secondary);
+}
+
+#root {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: auto;
+}

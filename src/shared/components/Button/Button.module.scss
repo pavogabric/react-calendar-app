@@ -1,17 +1,45 @@
 .btn {
-    padding: 16px;
+    padding: 16px 24px;
     border-radius: 10px;
-    border: none;
-    background-color: darkslategray;
-    border: 1px solid transparent;
-    color: white;
-    font-size: 16px;
+    font-size: 14px;
     cursor: pointer;
     transition: all 200ms;
+    text-transform: uppercase;
+    font-weight: 600;
 
-    &:hover {
-        border: 1px solid darkslategray;
+    &.primary {
+        background-color: var(--primary);
+        border: 1px solid transparent;
+        color: white;
+
+        &:hover {
+            border: 1px solid var(--primary);
+            background-color: transparent;
+            color: var(--primary);
+        }
+    }
+
+    &.secondary {
         background-color: transparent;
-        color: darkslategray;
+        border: 1px solid var(--primary);
+        color: var(--primary);
+
+        &:hover {
+            border: 1px solid transparent;
+            background-color: var(--primary);
+            color: white;
+        }
+    }
+
+    &.textLight {
+        background-color: transparent;
+        border: none;
+        color: white;
+    }
+
+    &.textDark {
+        background-color: transparent;
+        border: none;
+        color: var(--primary);
     }
 }

@@ -7,7 +7,10 @@ const Login = () => {
 
     return (
         <div className={styles.login}>
-            <Button onClick={() => login()}>Login with Google 🚀</Button>
+            <h1>Welcome to Calendar App!</h1>
+            <Button variant="primary" onClick={() => login()}>
+                Login with Google &nbsp; 🚀
+            </Button>
         </div>
     );
 };

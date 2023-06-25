@@ -21,15 +21,21 @@ const CalendarEvents: FC<Props> = ({ calendarId }) => {
     return (
         <div className={styles.events}>
             <div className={styles.header}>
-                <h3>Calendar events:</h3>
                 {/* TODO make dropdown component */}
-                <select name="timeRange" value={timeRange} onChange={handleTimeRangeChange}>
-                    {timeRangeOptions.map(({ value, label }) => (
-                        <option key={value} value={value}>
-                            {label}
-                        </option>
-                    ))}
-                </select>
+                <div className={styles.dropdown}>
+                    <p className={styles.label}>Select time range:</p>
+                    <select
+                        className={styles.select}
+                        name="timeRange"
+                        value={timeRange}
+                        onChange={handleTimeRangeChange}>
+                        {timeRangeOptions.map(({ value, label }) => (
+                            <option key={value} value={value}>
+                                {label}
+                            </option>
+                        ))}
+                    </select>
+                </div>
             </div>
 
             {timeRange === TimeRangeOptions.Day && <DayView events={events} />}

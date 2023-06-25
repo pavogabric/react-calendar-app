@@ -1,4 +1,3 @@
-import { LogoutButton } from '../../shared/components';
 import styles from './Calendar.module.scss';
 import { CalendarEvents } from './components';
 import { useCalendar } from './hooks';
@@ -16,9 +15,6 @@ const Calendar = () => {
 
     return (
         <div className={styles.calendar}>
-            <div className={styles.header}>
-                <p>Calendar page</p> <LogoutButton />
-            </div>
             <CalendarEvents calendarId={calendar.id} />
         </div>
     );
