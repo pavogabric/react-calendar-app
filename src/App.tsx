@@ -1,5 +1,6 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Login from './auth/login/Login';
+import Calendar from './dashboard/calendar/Calendar';
 import GuestRoute from './shared/components/GuestRoute/GuestRoute';
 import PrivateRoute from './shared/components/PrivateRoute/PrivateRoute';
 import { RoutesEnum } from './shared/enums';
@@ -11,7 +12,8 @@ function App() {
                 <Route path={RoutesEnum.Login} element={<Login />} />
             </Route>
             <Route element={<PrivateRoute />}>
-                <Route path={RoutesEnum.Home} element={<div>dashboard</div>} />
+                <Route path={RoutesEnum.Home} element={<Navigate to={RoutesEnum.Calendar} />} />
+                <Route path={RoutesEnum.Calendar} element={<Calendar />} />
             </Route>
         </Routes>
     );
