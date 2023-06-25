@@ -1,0 +1,11 @@
+.container {
+    .actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .nextBtn {
+            margin-left: auto;
+        }
+    }
+}

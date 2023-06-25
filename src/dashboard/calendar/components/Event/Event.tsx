@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { CalendarEvent } from '../../../../shared/types';
+import { formatStringDate } from '../../../../shared/utils';
 import styles from './Event.module.scss';
 
 interface Props {
@@ -11,8 +12,9 @@ const Event: FC<Props> = ({ event }) => {
     return (
         <div className={styles.event}>
             <h4>{summary}</h4>
-            <p>Start {start.dateTime}</p>
-            <p>End {end.dateTime}</p>
+            <p>Date: {formatStringDate(start.dateTime, 'dd/MM/yyyy')}</p>
+            <p>Start time: {formatStringDate(start.dateTime, 'HH:mm')}</p>
+            <p>End time: {formatStringDate(end.dateTime, 'HH:mm')}</p>
         </div>
     );
 };
