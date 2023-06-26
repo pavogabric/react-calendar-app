@@ -27,6 +27,22 @@ function customRender(ui: React.ReactElement, options = {}) {
     });
 }
 
+export const mockIntersectionObserver = () => {
+    window.IntersectionObserver = vi.fn().mockReturnValue({
+        observe: vi.fn(),
+        unobserve: vi.fn(),
+        disconnect: vi.fn(),
+    });
+};
+
+export const mockResizeObserver = () => {
+    window.ResizeObserver = vi.fn().mockReturnValue({
+        observe: vi.fn(),
+        unobserve: vi.fn(),
+        disconnect: vi.fn(),
+    });
+};
+
 export * from '@testing-library/react';
 export { default as userEvent } from '@testing-library/user-event';
 export { customRender as render };

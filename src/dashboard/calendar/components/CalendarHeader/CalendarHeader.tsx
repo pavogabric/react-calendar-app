@@ -25,6 +25,7 @@ const CalendarHeader: FC<Props> = ({ selectedTimeRange, timeRangeOptions, onTime
                 <Dropdown
                     value={selectedTimeRange}
                     options={timeRangeOptions}
+                    label="Select time range:"
                     onChange={onTimeRangeChange}
                 />
             </div>
