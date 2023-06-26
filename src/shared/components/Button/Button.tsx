@@ -8,10 +8,11 @@ type BaseProps = React.DetailedHTMLProps<
 >;
 
 interface Props extends BaseProps {
-    variant: 'primary' | 'secondary' | 'textLight' | 'textDark';
+    variant: 'primary' | 'secondary' | 'textLight' | 'textDark' | 'danger';
+    size?: 'normal' | 'small';
 }
 
-const Button: FC<Props> = ({ children, variant, ...props }) => {
+const Button: FC<Props> = ({ children, variant, size = 'normal', ...props }) => {
     return (
         <button
             {...props}
@@ -20,6 +21,9 @@ const Button: FC<Props> = ({ children, variant, ...props }) => {
                 [styles.secondary]: variant === 'secondary',
                 [styles.textLight]: variant === 'textLight',
                 [styles.textDark]: variant === 'textDark',
+                [styles.danger]: variant === 'danger',
+                [styles.small]: size === 'small',
+                [styles.normal]: size === 'normal',
             })}>
             {children}
         </button>

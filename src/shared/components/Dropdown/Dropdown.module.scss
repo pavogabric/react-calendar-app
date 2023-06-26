@@ -1,0 +1,48 @@
+.dropdownContainer {
+    position: relative;
+
+    .label {
+        margin-right: 6px;
+        font-weight: 400;
+    }
+
+    .dropdown {
+        text-transform: capitalize;
+        text-align: left;
+        padding: 6px 12px;
+        width: 140px;
+        font-size: 14px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        background-color: white;
+        font-weight: 600;
+        cursor: pointer;
+        border-radius: 6px;
+        font-family: var(--font-primary);
+    }
+
+    .options {
+        background-color: white;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        list-style: none;
+        padding: 14px 12px;
+        border-radius: 6px;
+        width: 200px;
+        position: absolute;
+        top: 40px;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+
+        &Item {
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: var(--primary);
+                color: white;
+            }
+        }
+    }
+}

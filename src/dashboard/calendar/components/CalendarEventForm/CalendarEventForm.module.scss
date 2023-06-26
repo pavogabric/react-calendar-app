@@ -1,0 +1,48 @@
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 0px 30px;
+    width: 500px;
+
+    .fields {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        margin: 20px 0;
+
+        .field {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            label {
+                font-size: 16px;
+                white-space: nowrap;
+            }
+
+            input {
+                width: 100%;
+                padding: 10px 12px;
+                border-radius: 6px;
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                font-family: var(--font-primary);
+
+                &[type='time'] {
+                    width: 25%;
+                }
+            }
+
+            .errorMsg {
+                color: red;
+                font-size: 12px;
+                margin-left: 6px;
+            }
+        }
+    }
+
+    .actions {
+        display: flex;
+        align-self: flex-end;
+    }
+}

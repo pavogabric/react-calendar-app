@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 import { timeRangeOptions } from '../../constants';
 import { TimeRangeOptions } from '../../enums';
 import { useCalendarEvents } from '../../hooks';
-import { DayView, MonthView, WeekView } from '../index';
+import { CalendarHeader, DayView, MonthView, WeekView } from '../index';
 import styles from './CalendarEvents.module.scss';
 
 interface Props {
@@ -14,31 +14,15 @@ const CalendarEvents: FC<Props> = ({ calendarId }) => {
 
     const { events } = useCalendarEvents(calendarId);
 
-    const handleTimeRangeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setTimeRange(e.target.value as TimeRangeOptions);
-    };
-
     return (
         <div className={styles.events}>
-            <div className={styles.header}>
-                {/* TODO make dropdown component */}
-                <div className={styles.dropdown}>
-                    <p className={styles.label}>Select time range:</p>
-                    <select
-                        className={styles.select}
-                        name="timeRange"
-                        value={timeRange}
-                        onChange={handleTimeRangeChange}>
-                        {timeRangeOptions.map(({ value, label }) => (
-                            <option key={value} value={value}>
-                                {label}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-            </div>
+            <CalendarHeader
+                selectedTimeRange={timeRange}
+                timeRangeOptions={timeRangeOptions}
+                onTimeRangeChange={(value) => setTimeRange(value)}
+            />
 
-            {timeRange === TimeRangeOptions.Day && <DayView events={events} />}
+            {timeRange === TimeRangeOptions.Day && <DayView events={events} isolatedView />}
             {timeRange === TimeRangeOptions.Week && <WeekView events={events} />}
             {timeRange === TimeRangeOptions.Month && <MonthView events={events} />}
         </div>

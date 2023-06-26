@@ -1,6 +1,8 @@
+import classNames from 'classnames';
 import { addDays, format } from 'date-fns';
 import { FC, useState } from 'react';
 import { Event } from '..';
+import { Button } from '../../../../shared/components';
 import { CalendarEvent } from '../../../../shared/types';
 import EventsUtils from '../../utils/EventsUtils';
 import styles from './DayView.module.scss';
@@ -9,38 +11,53 @@ interface Props {
     events: CalendarEvent[];
     date?: Date;
     hideButtons?: boolean;
+    hideDayTitle?: boolean;
+    isolatedView?: boolean;
 }
 
-const DayView: FC<Props> = ({ events, hideButtons = false, date = new Date() }) => {
+const DayView: FC<Props> = ({
+    events,
+    date = new Date(),
+    hideButtons = false,
+    hideDayTitle = false,
+    isolatedView = false,
+}) => {
     const [currentDate, setCurrentDate] = useState(date);
 
     const eventsForDay = EventsUtils.getEventsForDate(events, currentDate);
 
-    const today = new Date();
-    const showPreviousButton = EventsUtils.shouldShowPreviousBtn(today, currentDate);
+    const disablePrevBtn = EventsUtils.shouldDisablePreviousBtn(new Date(), currentDate);
 
     return (
-        <div className={styles.container}>
-            <div>
-                <h4>{format(currentDate, 'EEEE do LLL')}</h4>
-                <br />
-                {!hideButtons && (
-                    <div>
-                        {showPreviousButton && (
-                            <button onClick={() => setCurrentDate(addDays(currentDate, -1))}>
-                                Previous day
-                            </button>
-                        )}
-                        <button onClick={() => setCurrentDate(addDays(currentDate, 1))}>
-                            Next day
-                        </button>
-                    </div>
-                )}
-            </div>
+        <div
+            className={classNames(styles.container, {
+                [styles.isolatedView]: isolatedView,
+            })}>
+            {!hideDayTitle && <h3>{format(currentDate, 'EEEE do LLL')}</h3>}
 
-            {eventsForDay.length === 0 && <p>No events for this day.</p>}
-            {eventsForDay.length > 0 &&
-                eventsForDay.map((event) => <Event key={event.id} event={event} />)}
+            {!hideButtons && (
+                <div className={styles.actions}>
+                    <Button
+                        variant="secondary"
+                        size="small"
+                        disabled={disablePrevBtn}
+                        onClick={() => setCurrentDate(addDays(currentDate, -1))}>
+                        Previous day
+                    </Button>
+                    <Button
+                        variant="secondary"
+                        size="small"
+                        onClick={() => setCurrentDate(addDays(currentDate, 1))}>
+                        Next day
+                    </Button>
+                </div>
+            )}
+
+            <div className={styles.eventsContainer}>
+                {eventsForDay.length === 0 && <p className={styles.noEvents}>No events.</p>}
+                {eventsForDay.length > 0 &&
+                    eventsForDay.map((event) => <Event key={event.id} event={event} />)}
+            </div>
         </div>
     );
 };
