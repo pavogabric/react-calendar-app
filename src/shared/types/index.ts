@@ -1,4 +1,15 @@
-import type { CalendarEvent, CalendarEventsResponse } from './CalendarEvent';
+import type {
+    CalendarEvent,
+    CalendarEventRequestData,
+    CalendarEventsResponse,
+} from './CalendarEvent';
 import type { Calendar, CalendarListResponse } from './CalendarList';
 import type { User } from './User';
-export type { Calendar, CalendarEvent, CalendarEventsResponse, CalendarListResponse, User };
+export type {
+    Calendar,
+    CalendarEvent,
+    CalendarEventRequestData,
+    CalendarEventsResponse,
+    CalendarListResponse,
+    User,
+};

@@ -4,8 +4,8 @@ export interface CalendarEvent {
     id: string;
     status: string;
     htmlLink: string;
-    created: string; // TODO check this;
-    updated: string; // TODO check this;
+    created: string;
+    updated: string;
     summary: string;
     description: string;
     location: string;
@@ -23,18 +23,18 @@ export interface CalendarEvent {
         self: boolean;
     };
     start: {
-        dateTime: string; // TODO check this;
+        dateTime: string;
         timeZone: string;
     };
     end: {
-        dateTime: string; // TODO check this;
+        dateTime: string;
         timeZone: string;
     };
     endTimeUnspecified: boolean;
     recurrence: [string];
     recurringEventId: string;
     originalStartTime: {
-        dateTime: string; // TODO check this;
+        dateTime: string;
         timeZone: string;
     };
     transparency: string;
@@ -163,4 +163,16 @@ export interface CalendarEventsResponse {
     nextPageToken: string;
     nextSyncToken: string;
     items: CalendarEvent[];
+}
+
+export interface CalendarEventRequestData {
+    summary: string;
+    start: {
+        dateTime: Date;
+        timeZone: string;
+    };
+    end: {
+        dateTime: Date;
+        timeZone: string;
+    };
 }

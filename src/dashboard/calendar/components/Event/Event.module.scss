@@ -1,1 +1,24 @@
+.event {
+    padding: 24px 32px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: var(--primary);
+    color: white;
 
+    .details {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        p {
+            font-size: 14px;
+        }
+    }
+
+    .actions {
+        display: flex;
+        justify-content: flex-end;
+    }
+}

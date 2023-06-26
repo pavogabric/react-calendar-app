@@ -1,8 +1,12 @@
 import api from '../../../core/api/services/ApiService';
-import { CalendarEventsResponse, CalendarListResponse } from '../../../shared/types';
+import {
+    CalendarEventRequestData,
+    CalendarEventsResponse,
+    CalendarListResponse,
+} from '../../../shared/types';
 
 export class CalendarServices {
-    // TODO add base path
+    URL = 'https://www.googleapis.com/calendar/v3/calendars';
 
     async getCalendarList() {
         const data = api.responseHandler(
@@ -18,8 +22,22 @@ export class CalendarServices {
 
         const data = api.responseHandler(
             await api.get<CalendarEventsResponse>(
-                `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?timeMin=${timeMin}&singleEvents=true&orderBy=startTime`
+                `${this.URL}/${calendarId}/events?timeMin=${timeMin}&singleEvents=true&orderBy=startTime`
             )
+        );
+        return data;
+    }
+
+    async createCalendarEvent(calendarId: string, body: CalendarEventRequestData) {
+        const data = api.responseHandler(
+            await api.post<CalendarEventsResponse>(`${this.URL}/${calendarId}/events`, body)
+        );
+        return data;
+    }
+
+    async deleteCalendarEvent(eventId: string, calendarId: string) {
+        const data = api.responseHandler(
+            await api.delete<CalendarEventsResponse>(`${this.URL}/${calendarId}/events/${eventId}`)
         );
         return data;
     }
