@@ -12,7 +12,6 @@ const useLogin = () => {
             navigate(RoutesEnum.Home);
         },
         scope: 'email profile openid https://www.googleapis.com/auth/calendar',
-        // prompt: 'consent', // to see the grant access popup
     });
 
     return login;

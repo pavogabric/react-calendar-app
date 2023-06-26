@@ -43,6 +43,10 @@
                 background-color: var(--primary);
                 color: white;
             }
+
+            &.selected {
+                font-weight: 600;
+            }
         }
     }
 }

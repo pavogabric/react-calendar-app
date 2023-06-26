@@ -1,4 +1,5 @@
 import { Listbox } from '@headlessui/react';
+import classNames from 'classnames';
 import styles from './Dropdown.module.scss';
 
 interface Props<T> {
@@ -21,9 +22,14 @@ const Dropdown = function <T extends string | number>({
                 {value}
             </Listbox.Button>
             <Listbox.Options className={styles.options}>
-                {options.map(({ value, label }) => (
-                    <Listbox.Option className={styles.optionsItem} key={value} value={value}>
-                        {label}
+                {options.map((option) => (
+                    <Listbox.Option
+                        className={classNames(styles.optionsItem, {
+                            [styles.selected]: option.value === value,
+                        })}
+                        key={option.value}
+                        value={option.value}>
+                        {option.label}
                     </Listbox.Option>
                 ))}
             </Listbox.Options>
