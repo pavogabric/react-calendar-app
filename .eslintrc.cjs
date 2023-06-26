@@ -9,6 +9,7 @@ module.exports = {
         'plugin:react/recommended',
         'plugin:react-hooks/recommended',
         'plugin:@tanstack/eslint-plugin-query/recommended',
+        'plugin:testing-library/react',
     ],
     overrides: [
         {
@@ -20,18 +21,26 @@ module.exports = {
                 sourceType: 'script',
             },
         },
+
+        {
+            // Linting for tests only
+            files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+            extends: ['plugin:jest-dom/recommended', 'plugin:testing-library/react'],
+        },
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
-    plugins: ['@typescript-eslint', 'react', 'react-hooks', '@tanstack/query'],
+    plugins: ['@typescript-eslint', 'react', 'react-hooks', '@tanstack/query', 'testing-library'],
     rules: {
         'react/react-in-jsx-scope': 'off',
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'warn',
-        // '@tanstack/query/exhaustive-deps': 'error',
-        // '@tanstack/query/prefer-query-object-syntax': 'error',
+        'testing-library/await-async-query': 'error',
+        'testing-library/no-await-sync-query': 'error',
+        'testing-library/no-debugging-utils': 'warn',
+        'testing-library/no-dom-import': 'off',
     },
 };
